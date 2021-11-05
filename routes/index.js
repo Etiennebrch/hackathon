@@ -6,17 +6,17 @@ const orderModel = require("../models/orders");
 
 router.get("/", function (req, res, next) {
   if (req.session.userInfo) {
-    console.log(req.session);
+   // console.log(req.session);
     res.redirect("/homepage");
   } else {
     res.render("index", { session: req.session.userInfo });
   }
-  console.log(req.session);
+  //console.log(req.session);
 });
 
 router.get("/homepage", async function (req, res) {
   if (req.session.userInfo) {
-    console.log(req.session);
+    //console.log(req.session);
     res.render("homepage", { session: req.session.userInfo });
   } else {
     res.redirect("/");
@@ -88,6 +88,8 @@ router.post("/search", async function (req, res) {
     arrival: to,
     date: date,
   });
+  
+  console.log(results);
 
   res.render("searchresult", { results, session: req.session.userInfo, date });
 });
@@ -101,7 +103,7 @@ router.get("/add-to-cart", async function (req, res) {
     req.session.cart = [];
     req.session.cart.push(await journeyModel.findOne({ _id: journeyId }));
   }
-  console.log(req.session);
+  //console.log(req.session);
 
   res.redirect("/cart");
 });
@@ -118,7 +120,7 @@ router.get("/cart", function (req, res) {
     totalCart += item.price;
   }
 
-  console.log(session);
+ // console.log(session);
 
   res.render("cart", { session, myCart, totalCart });
 });
