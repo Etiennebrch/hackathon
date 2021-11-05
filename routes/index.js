@@ -15,11 +15,12 @@ router.get("/", function (req, res, next) {
 });
 
 router.get("/homepage", async function (req, res) {
-  //const allCity = await
+
+  const allCities = await journeyModel.distinct('departure');
   
   if (req.session.userInfo) {
     //console.log(req.session);
-    res.render("homepage", { session: req.session.userInfo });
+    res.render("homepage", {allCities, session: req.session.userInfo });
   } else {
     res.redirect("/");
   }

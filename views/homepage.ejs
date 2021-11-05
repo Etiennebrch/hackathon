@@ -19,14 +19,25 @@
 				<form method="post" action="/search" class="row justify-content-center align-items-center">
 					<div class="col-xs-12 col-md-3 mb-1">
 						<div class="form-floating">
-								<input type="text" class="form-control" name="from" id="examplefrom" placeholder="city" value=""/>
+								<input class="form-control" list="from" name="from" id="examplefrom" placeholder="city" value=""/>
 								<label for="examplefrom">From :</label>
+								<datalist id="from">
+									<% for(let city of allCities){%>
+										<option value="<%= city %>"></option>
+									<%} %> 
+								</datalist>
+
 						</div>
 					</div>
 					<div class="col-xs-12 col-md-3 mb-1">
 						<div class="form-floating">
-								<input type="text" class="form-control" name="to" id="exampleto" placeholder="city" value=""/>
+								<input class="form-control" list="to" name="to" id="exampleto" placeholder="city" value=""/>
 								<label for="examplefrom">To :</label>
+								<datalist id="to">
+									<% for(let city of allCities){%>
+										<option value="<%= city %>"></option>
+									<%} %> 
+								</datalist>
 						</div>
 					</div>
 					<div class="col-xs-12 col-md-3 mb-1">
