@@ -10,22 +10,23 @@
       />
       Ticketac
     </a>
+    <% 
+          let connect = session ? "Sign out" : ""; %>
+        <% if (connect === "Sign out") { %> 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse justify-content-end text-end" id="navbarTogglerDemo02">
       <div class="navbar-nav">
-        <% 
-          let connect = session ? "Sign out" : ""; %>
-        <% if (connect === "Sign out") { %>  
+         
         <a href="/sign-out" class="nav-link fw-bold">
           <%= connect %>
         </a>
-        <% } %>
       </div>
       <div class="navbar-nav">
         <a href="/my-journeys" class="nav-link fw-bold">My last trips</a>
       </div>
+      <% } %>
     </div>
   </div>
 </nav>
