@@ -15,6 +15,8 @@ router.get("/", function (req, res, next) {
 });
 
 router.get("/homepage", async function (req, res) {
+  //const allCity = await
+  
   if (req.session.userInfo) {
     //console.log(req.session);
     res.render("homepage", { session: req.session.userInfo });
