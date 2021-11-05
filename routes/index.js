@@ -113,6 +113,10 @@ router.get("/add-to-cart", async function (req, res) {
 
 router.get("/cart", function (req, res) {
   const session = req.session;
+  const sessionUser = req.session.userInfo
+
+  if(sessionUser){
+
   if(!req.session.cart){
     req.session.cart = [];
   }
@@ -123,9 +127,12 @@ router.get("/cart", function (req, res) {
     totalCart += item.price;
   }
 
- // console.log(session);
+ //console.log(session);
 
   res.render("cart", { session, myCart, totalCart });
+  }else{
+    res.redirect("/");
+  };
 });
 
 router.get("/checkout", async function (req, res) {
@@ -144,6 +151,9 @@ router.get("/checkout", async function (req, res) {
 });
 
 router.get("/my-journeys", async function (req, res) {
+
+  
+
   const myJourneys = await orderModel
     .find({ user: req.session.userInfo.id })
     .populate("journey");
